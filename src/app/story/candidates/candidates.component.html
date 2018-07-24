@@ -1,0 +1,49 @@
+<div class="container mb-5">
+  <h2 class="text-light">{{candidatesTitle}}</h2>
+  <div *ngIf="!isVoting">
+    <div *ngIf="!candidates || !candidates.length">
+      <p class="text-muted">{{candidatesEmptyMessage}}</p>
+    </div>
+    <div class="form-row">
+      <div class="col-auto"
+           *ngFor="let candidate of candidates">
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <button type="submit" class="btn btn-success" (click)="chooseCantidate(candidate.word, 1)">
+              <fa-icon [icon]="faAngleDoubleUp"></fa-icon>
+            </button>
+          </div>
+          <div class="input-group-prepend">
+            <span class="input-group-text">{{candidate.weight}}</span>
+          </div>
+          <div class="input-group-prepend">
+            <span class="input-group-text">{{candidate.word}}</span>
+          </div>
+          <div class="input-group-append">
+            <button type="submit" class="btn btn-danger" (click)="chooseCantidate(candidate.word, -1)">
+              <fa-icon [icon]="faAngleDoubleDown"></fa-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="isVoting">
+    <h5 class="text-muted">"{{vote.phrase}}"</h5>
+    <div class="input-group mb-2">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Amount:</span>
+      </div>
+      <div class="input-group-prepend">
+        <input #number [(ngModel)]="vote.weight" type="number" min="1" (keyup)="integer()">
+      </div>
+      <div class="input-group-append">
+        <button type="submit" class="btn" [class.btn-success]="vote.weightPolarity>0"
+                [class.btn-danger]="vote.weightPolarity<0"
+                (click)="submitVote()">
+          {{vote.weightPolarity > 0 ? 'up' : 'down'}}-vote
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
