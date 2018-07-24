@@ -1,0 +1,16 @@
+<h1 class="display-3 text-center text-light mb-4">{{storyTitle}}</h1>
+<div class="container jumbotron">
+  <div class="row">
+    <div class="col-sm-9">
+      <h2>{{storyDescription}}</h2>
+    </div>
+    <div class="col-sm-3">
+      <app-countdown-timer [updateTime]="updateTime"></app-countdown-timer>
+    </div>
+  </div>
+  <blockquote class="blockquote pl-4">
+    <p *ngIf="!story || !story.length">[Start a new story]</p>
+    <p>{{story}} <span class="text-muted font-italic">{{phrase}}</span></p>
+    <footer class="blockquote-footer">{{storyFooter}}</footer>
+  </blockquote>
+</div>
