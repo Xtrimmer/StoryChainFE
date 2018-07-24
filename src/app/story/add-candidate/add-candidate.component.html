@@ -1,0 +1,15 @@
+<div class="container text-light">
+  <h2>Or add a new one</h2>
+  <label class="control-label sr-only" for="phrase">Enter phrase</label>
+  <div class="input-group">
+    <input class="form-control" id="phrase" type="text" placeholder="Enter your phrase here"
+           [(ngModel)]="phrase" (keyup)="onType()">
+    <div class="input-group-append">
+      <span class="input-group-text">satoshi: {{cost}}</span>
+    </div>
+    <div class="input-group-append">
+      <input class="btn btn-success" type="submit" value="add"
+             (click)="onClick()">
+    </div>
+  </div>
+</div>
