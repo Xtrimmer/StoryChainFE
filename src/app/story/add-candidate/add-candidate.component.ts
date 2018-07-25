@@ -22,9 +22,11 @@ export class AddCandidateComponent implements OnInit {
   }
 
   onClick(): void {
-    this.buttonClicked.emit(this.phrase);
-    this.phrase = null;
-    this.cost = 0;
+    if (this.phrase && this.phrase.length) {
+      this.buttonClicked.emit(this.phrase);
+      this.phrase = null;
+      this.cost = 0;
+    }
   }
 
   fib(n: number) {
