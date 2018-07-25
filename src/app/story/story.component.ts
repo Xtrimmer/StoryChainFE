@@ -21,14 +21,15 @@ export class StoryComponent implements OnInit {
   ngOnInit() {
     this.storyService.getStory().subscribe((story) => {
       this.update(story);
-    });
 
-    // Open connection with server socket
-    let subscription = this.stompService.subscribe('/topic/story')
+      // Open connection with server socket
+      let subscription = this.stompService.subscribe('/topic/story/' + this.story.id);
 
-    subscription.subscribe((message: Message) => {
-      this.update(JSON.parse(message.body));
-      console.log(message.body);
+      subscription.subscribe((message: Message) => {
+        this.update(JSON.parse(message.body));
+        console.log(message.body);
+      });
+
     });
   }
 
