@@ -37,17 +37,17 @@ export class StoryComponent implements OnInit {
     this.storyAddition = phrase;
   }
 
-  onAddWord(word: string): void {
-    this.storyService.addWord(word);
+  onAddPhrase(phrase: string): void {
+    this.storyService.addPhrase(this.story.id, phrase);
     this.storyAddition = null;
   }
 
   onVote(vote: Vote): void {
-    this.storyService.vote(vote);
+    this.storyService.vote(this.story.id, vote);
   }
 
   private update(story) {
     this.story = story;
-    this.paragraph = this.story.words.join(' ');
+    this.paragraph = this.story.phrases.join(' ');
   }
 }

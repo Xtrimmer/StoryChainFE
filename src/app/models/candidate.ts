@@ -1,5 +1,5 @@
 export interface Candidate {
-  word: string;
+  phrase: string;
   created: number;
   weight: number;
 }

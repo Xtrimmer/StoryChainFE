@@ -9,7 +9,7 @@
            *ngFor="let candidate of candidates">
         <div class="input-group mb-2">
           <div class="input-group-prepend">
-            <button type="submit" class="btn btn-success" (click)="chooseCantidate(candidate.word, 1)">
+            <button type="submit" class="btn btn-success" (click)="chooseCantidate(candidate.phrase, 1)">
               <fa-icon [icon]="faAngleDoubleUp"></fa-icon>
             </button>
           </div>
@@ -17,10 +17,10 @@
             <span class="input-group-text">{{candidate.weight}}</span>
           </div>
           <div class="input-group-prepend">
-            <span class="input-group-text">{{candidate.word}}</span>
+            <span class="input-group-text">{{candidate.phrase}}</span>
           </div>
           <div class="input-group-append">
-            <button type="submit" class="btn btn-danger" (click)="chooseCantidate(candidate.word, -1)">
+            <button type="submit" class="btn btn-danger" (click)="chooseCantidate(candidate.phrase, -1)">
               <fa-icon [icon]="faAngleDoubleDown"></fa-icon>
             </button>
           </div>

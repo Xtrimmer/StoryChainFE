@@ -10,7 +10,8 @@ import {Vote} from "../models/vote";
   providedIn: 'root'
 })
 export class StoryService {
-  private url = 'http://18.211.206.82/api/';
+  //private url = 'http://18.211.206.82/api/';
+  private url = 'http://localhost/api/';
 
   constructor(private http: HttpClient) {
   }
@@ -23,14 +24,14 @@ export class StoryService {
       )
   }
 
-  addWord(word: string): void {
-    this.http.post(this.url + 'add', word)
+  addPhrase(storyId: string, phrase: string): void {
+    this.http.post(this.url + 'add/' + storyId, phrase)
       .subscribe(resp => {
         console.log("response %o, ", resp);
       });
   }
 
-  vote(vote: Vote): void {
+  vote(storyId: string, vote: Vote): void {
     let options = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -38,7 +39,7 @@ export class StoryService {
     };
     let object: string = JSON.stringify(vote);
 
-    this.http.post(this.url + 'vote', object, options)
+    this.http.post(this.url + 'vote/' + storyId, object, options)
       .subscribe(resp => {
         console.log("response %o, ", resp);
       });

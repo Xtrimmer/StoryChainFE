@@ -1,5 +1,5 @@
 <div>
   <app-story-display [phrase]="storyAddition" [story]="paragraph" [updateTime]="story?.updateTime"></app-story-display>
   <app-candidates [candidates]="story?.candidates" (clickEvent)="onVote($event)"></app-candidates>
-  <app-add-candidate (phraseChanged)="onAddition($event)" (buttonClicked)="onAddWord($event)"></app-add-candidate>
+  <app-add-candidate (phraseChanged)="onAddition($event)" (buttonClicked)="onAddPhrase($event)"></app-add-candidate>
 </div>

@@ -2,7 +2,7 @@ import {Candidate} from "./candidate";
 
 export interface Story {
   id: string;
-  words: string[];
+  phrases: string[];
   candidates: Candidate[];
   period: number;
   updateTime: string;
