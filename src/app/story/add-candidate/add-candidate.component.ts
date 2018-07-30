@@ -18,7 +18,7 @@ export class AddCandidateComponent implements OnInit {
 
   onType(): void {
     this.phraseChanged.emit(this.phrase);
-    this.cost = this.fib(this.phrase.length);
+    this.cost = this.fib(this.phrase.trim().length);
   }
 
   onClick(): void {
