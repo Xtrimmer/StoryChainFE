@@ -1,10 +1,6 @@
-<h1 class="display-3 text-center text-light mb-4">{{header}}</h1>
-<div class="container jumbotron">
+<div class="container jumbotron pt-3">
   <div class="row">
-    <div class="col-sm-9">
-      <h2>{{story?.title}}</h2>
-    </div>
-    <div class="col-sm-3">
+    <div class="col">
       <app-countdown-timer [updateTime]="story?.updateTime"></app-countdown-timer>
     </div>
   </div>

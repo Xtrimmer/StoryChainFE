@@ -13,6 +13,9 @@ import {stompConfig} from "./config/stompConfig";
 import {StoryService} from "./services/story.service";
 import {HttpClientModule} from "@angular/common/http";
 import {CountdownTimerComponent} from './story/story-display/countdown-timer/countdown-timer.component';
+import {StoryListComponent} from './story-list/story-list.component';
+import {RouterModule} from "@angular/router";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -21,13 +24,21 @@ import {CountdownTimerComponent} from './story/story-display/countdown-timer/cou
     CandidatesComponent,
     AddCandidateComponent,
     StoryDisplayComponent,
-    CountdownTimerComponent
+    CountdownTimerComponent,
+    StoryListComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FontAwesomeModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot([
+      {path: 'stories', component: StoryListComponent, data: {page: 'list'}},
+      {path: 'stories/:id', component: StoryComponent, data: {page: 'detail'}},
+      {path: '', redirectTo: 'stories', pathMatch: 'full'},
+      {path: '**', redirectTo: 'stories', pathMatch: 'full'}
+    ]),
   ],
   providers: [StoryService,
     StompService,

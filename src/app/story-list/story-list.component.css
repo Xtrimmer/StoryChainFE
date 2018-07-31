@@ -1,0 +1,15 @@
+.jumbotron-min {
+  padding: 0.5rem;
+  background-color: #e9ecef;
+  border-radius: 0.3rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.jumbotron-min:hover {
+  background-color: #cdcdcd;
+}
+
+a {
+  text-decoration: none;
+  color: #212529;
+}

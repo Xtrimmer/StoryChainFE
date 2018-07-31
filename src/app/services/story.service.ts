@@ -10,14 +10,21 @@ import {Vote} from "../models/vote";
   providedIn: 'root'
 })
 export class StoryService {
-  //private url = 'http://18.211.206.82/api/';
-  private url = 'http://localhost/api/';
+  private url = 'http://localhost:8080/api/';
 
   constructor(private http: HttpClient) {
   }
 
-  getStory(): Observable<Story> {
-    return this.http.get<Story>(this.url + 'story')
+  getStory(id: string): Observable<Story> {
+    return this.http.get<Story>(this.url + 'story/' + id)
+      .pipe(
+        tap(data => console.log('Single: ' + JSON.stringify(data))),
+        catchError(this.handleError)
+      )
+  }
+
+  getStories(): Observable<Story[]> {
+    return this.http.get<Story[]>(this.url + 'stories')
       .pipe(
         tap(data => console.log('Single: ' + JSON.stringify(data))),
         catchError(this.handleError)

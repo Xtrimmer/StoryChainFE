@@ -6,7 +6,6 @@ import {Story} from "../../models/story";
   templateUrl: './story-display.component.html'
 })
 export class StoryDisplayComponent implements OnInit, OnChanges {
-  header: string = "Satoshi's Story";
   paragraph: string;
   @Input() phrase: string;
   @Input() story: Story;
@@ -19,7 +18,7 @@ export class StoryDisplayComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.paragraph = this.story && this.story.phrases && this.story.phrases.length
-      ? this.story.phrases.join(' ') : '[Start a new story]';
+      ? this.story.phrases.join(' ') : '[Add a new candidate to begin this story]';
   }
 
 }

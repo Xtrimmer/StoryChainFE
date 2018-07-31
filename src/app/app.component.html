@@ -1,4 +1,14 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div>
-  <app-story></app-story>
+<nav class="navbar navbar-expand navbar-light bg-light">
+  <a class="navbar-brand">Satoshi's Stories</a>
+  <ul class="nav navbar-nav">
+    <li><a class="nav-link" [routerLink]="['/stories']">Home</a></li>
+    <li><a class="nav-link" [routerLink]="['/stories']">Stories</a></li>
+  </ul>
+</nav>
+<div class="main" [@routerTransition]="getPage(appOutlet)">
+  <div>
+    <router-outlet #appOutlet="outlet"></router-outlet>
+  </div>
 </div>
+
