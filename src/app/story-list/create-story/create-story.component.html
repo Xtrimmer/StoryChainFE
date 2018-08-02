@@ -1,0 +1,38 @@
+<button class="btn btn-success btn-sm btn-block" (click)="toggleForm()">Create a new Story</button>
+<div *ngIf="showForm">
+  <div class="container jumbotron mt-3">
+    <form #createStoryForm="ngForm">
+      <h3>Create a new Story</h3>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input id=title class="form-control" placeholder="The Best Story Ever" maxlength="50" type="text"
+               required [(ngModel)]="story.title" name="title" #title="ngModel">
+        <div [hidden]="title.valid || title.pristine" class="alert alert-danger">
+          A title is required ( Even if it is something ludicrous like "The Manly Art of Knitting" )
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="citation">Author</label>
+        <input id=citation class="form-control" maxlength="50"
+               name="citation" type="text" required [(ngModel)]="story.citation" #citation="ngModel">
+        <div [hidden]="citation.valid || citation.pristine" class="alert alert-danger">
+          An author is required ( Even if it is someone lame like Stephenie Meyer or L. Ron Hubbard )
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="period">Round Period in Minutes</label>
+        <input id=period class="form-control" name="period" type="number" min="0" max="3600"
+               pattern="([1-9]|[1-8][0-9]|9[0-9]|[1-8][0-9]{2}|9[0-8][0-9]|99[0-9]|[12][0-9]{3}|3[0-5][0-9]{2}|3600)"
+               required [(ngModel)]="story.period" #period="ngModel">
+        <div [hidden]="period.valid" class="alert alert-danger">
+          A number between 1 and 3600 is Required ( Unfortunately stories cannot travel backwards in time and waiting
+          longer than a day for an update just pisses people off )
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success" (click)="onSubmit()" [disabled]="!createStoryForm.form.valid">
+        Submit
+      </button>
+      <button type="submit" class="btn btn-danger ml-2" (click)="toggleForm()">Cancel</button>
+    </form>
+  </div>
+</div>

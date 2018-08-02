@@ -16,6 +16,7 @@ import {CountdownTimerComponent} from './story/story-display/countdown-timer/cou
 import {StoryListComponent} from './story-list/story-list.component';
 import {RouterModule} from "@angular/router";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {CreateStoryComponent} from './story-list/create-story/create-story.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     AddCandidateComponent,
     StoryDisplayComponent,
     CountdownTimerComponent,
-    StoryListComponent
+    StoryListComponent,
+    CreateStoryComponent
   ],
   imports: [
     BrowserModule,
@@ -34,10 +36,10 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot([
-      {path: 'stories', component: StoryListComponent, data: {page: 'list'}},
-      {path: 'stories/:id', component: StoryComponent, data: {page: 'detail'}},
-      {path: '', redirectTo: 'stories', pathMatch: 'full'},
-      {path: '**', redirectTo: 'stories', pathMatch: 'full'}
+      {path: 'storylist', component: StoryListComponent, data: {page: 'list'}},
+      {path: 'story/:id', component: StoryComponent, data: {page: 'detail'}},
+      {path: '', redirectTo: 'storylist', pathMatch: 'full'},
+      {path: '**', redirectTo: 'storylist', pathMatch: 'full'}
     ]),
   ],
   providers: [StoryService,

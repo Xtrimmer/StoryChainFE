@@ -32,7 +32,7 @@ export class StoryService {
   }
 
   addPhrase(storyId: string, phrase: string): void {
-    this.http.post(this.url + 'add/' + storyId, phrase)
+    this.http.post(this.url + 'add/candidate/' + storyId, phrase)
       .subscribe(resp => {
         console.log("response %o, ", resp);
       });
@@ -47,6 +47,20 @@ export class StoryService {
     let object: string = JSON.stringify(vote);
 
     this.http.post(this.url + 'vote/' + storyId, object, options)
+      .subscribe(resp => {
+        console.log("response %o, ", resp);
+      });
+  }
+
+  addNewStory(story: Story): void {
+    let options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    let object: string = JSON.stringify(story);
+
+    this.http.post(this.url + 'add/story/', object, options)
       .subscribe(resp => {
         console.log("response %o, ", resp);
       });

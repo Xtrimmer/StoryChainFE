@@ -1,10 +1,15 @@
 export class Vote {
   phrase: string;
   weight: number = 1;
-  weightPolarity: number;
+  voteType: VoteType;
 
   constructor(phrase: string, weightPolarity: number) {
     this.phrase = phrase;
-    this.weightPolarity = weightPolarity;
+    this.voteType = weightPolarity;
   }
+}
+
+export enum VoteType {
+  UPVOTE = 0,
+  DOWNVOTE = 1,
 }

@@ -9,7 +9,7 @@
            *ngFor="let candidate of candidates">
         <div class="input-group mb-2">
           <div class="input-group-prepend">
-            <button type="submit" class="btn btn-success" (click)="chooseCantidate(candidate.phrase, 1)">
+            <button type="submit" class="btn btn-success" (click)="chooseCantidate(candidate.phrase, VoteType.UPVOTE)">
               <fa-icon [icon]="faAngleDoubleUp"></fa-icon>
             </button>
           </div>
@@ -20,7 +20,7 @@
             <span class="input-group-text">{{candidate.phrase}}</span>
           </div>
           <div class="input-group-append">
-            <button type="submit" class="btn btn-danger" (click)="chooseCantidate(candidate.phrase, -1)">
+            <button type="submit" class="btn btn-danger" (click)="chooseCantidate(candidate.phrase, VoteType.DOWNVOTE)">
               <fa-icon [icon]="faAngleDoubleDown"></fa-icon>
             </button>
           </div>
@@ -38,10 +38,10 @@
         <input #number [(ngModel)]="vote.weight" type="number" min="1" (keyup)="integer()">
       </div>
       <div class="input-group-append">
-        <button type="submit" class="btn" [class.btn-success]="vote.weightPolarity>0"
-                [class.btn-danger]="vote.weightPolarity<0"
+        <button type="submit" class="btn" [class.btn-success]="vote.voteType == VoteType.UPVOTE"
+                [class.btn-danger]="vote.voteType == VoteType.DOWNVOTE"
                 (click)="submitVote()">
-          {{vote.weightPolarity > 0 ? 'up' : 'down'}}-vote
+          {{vote.voteType == VoteType.UPVOTE ? 'up' : 'down'}}-vote
         </button>
       </div>
     </div>

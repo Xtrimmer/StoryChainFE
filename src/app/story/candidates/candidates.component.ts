@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
 import {faAngleDoubleUp} from "@fortawesome/free-solid-svg-icons/faAngleDoubleUp";
 import {faAngleDoubleDown} from "@fortawesome/free-solid-svg-icons/faAngleDoubleDown";
 import {Candidate} from "../../models/candidate";
-import {Vote} from "../../models/vote";
+import {Vote, VoteType} from "../../models/vote";
 
 @Component({
   selector: 'app-candidates',
@@ -14,7 +14,8 @@ export class CandidatesComponent implements OnInit, OnChanges {
   faAngleDoubleUp: any = faAngleDoubleUp;
   faAngleDoubleDown: any = faAngleDoubleDown;
   @Input() candidates: Candidate[];
-  vote: Vote = new Vote('', 0);
+  vote: Vote;
+  VoteType = VoteType;
   isVoting: boolean = false;
   @Output() clickEvent = new EventEmitter<Vote>();
 
@@ -25,8 +26,8 @@ export class CandidatesComponent implements OnInit, OnChanges {
   ngOnInit() {
   }
 
-  chooseCantidate(s: string, n: number,) {
-    this.vote = new Vote(s, n);
+  chooseCantidate(s: string, t: VoteType,) {
+    this.vote = new Vote(s, t);
     this.isVoting = true;
   }
 

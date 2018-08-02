@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Story} from "../models/story";
 import {StoryService} from "../services/story.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-story-list',
@@ -21,4 +22,9 @@ export class StoryListComponent implements OnInit {
     return story.phrases.join(" ").slice(0, 100) + '...';
   }
 
+  onStoryCreated(observable: Observable<any>) {
+    observable.subscribe(() =>
+      this.ngOnInit()
+    );
+  }
 }

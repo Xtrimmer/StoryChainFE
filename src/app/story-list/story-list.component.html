@@ -1,12 +1,12 @@
 <div class="container mt-4">
   <h1 class="display-4 text-center text-light mb-4">Story List</h1>
-  <button class="btn btn-success btn-sm btn-block">Create a new Story</button>
-  <div *ngFor="let story of stories; let i = index">
-    <a [routerLink]="['/stories', story.id]">
+  <app-create-story (formSubmitted)="onStoryCreated($event)"></app-create-story>
+  <div *ngFor="let story of stories">
+    <a [routerLink]="['/story', story.id]">
       <div class="jumbotron-min mt-3">
         <div class="row">
-          <div class="col-1">
-            <h1 class="text-center">{{i + 1}}</h1>
+          <div class="col-md-2">
+            <h2 class="text-center">{{story.totalValue}}</h2>
           </div>
           <div class="col">
             <h4>{{story?.title}}</h4>

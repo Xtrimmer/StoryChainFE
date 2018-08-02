@@ -8,4 +8,5 @@ export interface Story {
   citation: string;
   period: number;
   updateTime: string;
+  totalValue: number;
 }
