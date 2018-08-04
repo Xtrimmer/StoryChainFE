@@ -52,7 +52,7 @@ export class StoryService {
       });
   }
 
-  addNewStory(story: Story): void {
+  addNewStory(story: Story): Observable<Story> {
     let options = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -60,10 +60,7 @@ export class StoryService {
     };
     let object: string = JSON.stringify(story);
 
-    this.http.post(this.url + 'add/story/', object, options)
-      .subscribe(resp => {
-        console.log("response %o, ", resp);
-      });
+    return this.http.post<Story>(this.url + 'add/story/', object, options);
   }
 
   private handleError(err: HttpErrorResponse) {

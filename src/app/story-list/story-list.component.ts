@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Story} from "../models/story";
 import {StoryService} from "../services/story.service";
-import {Observable} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-story-list',
@@ -11,7 +11,8 @@ import {Observable} from "rxjs";
 export class StoryListComponent implements OnInit {
   stories: Story[];
 
-  constructor(private storyService: StoryService) {
+  constructor(private storyService: StoryService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -22,9 +23,7 @@ export class StoryListComponent implements OnInit {
     return story.phrases.join(" ").slice(0, 100) + '...';
   }
 
-  onStoryCreated(observable: Observable<any>) {
-    observable.subscribe(() =>
-      this.ngOnInit()
-    );
+  onStoryCreated(story: Story) {
+    this.router.navigate(['../story', story.id]);
   }
 }

@@ -10,7 +10,7 @@ import {StoryService} from "../../services/story.service";
 })
 export class CreateStoryComponent {
   showForm: boolean = false;
-  @Output() formSubmitted: EventEmitter<any> = new EventEmitter<any>();
+  @Output() formSubmitted: EventEmitter<Story> = new EventEmitter<Story>();
   story: Story = new class implements Story {
     candidates: Candidate[];
     citation: string = "The syndicate of Satoshi's storytellers";
@@ -30,10 +30,13 @@ export class CreateStoryComponent {
   }
 
   onSubmit() {
-    this.storyService.addNewStory(this.story);
+    this.storyService.addNewStory(this.story)
+      .subscribe(story =>
+        this.formSubmitted.emit(story)
+      );
     this.showForm = false;
     this.story.period = 60;
-    this.story.citation = null;
+    this.story.citation = "The syndicate of Satoshi's storytellers";
     this.story.title = null;
   }
 }
