@@ -1,4 +1,4 @@
-import {StompConfig} from "@stomp/ng2-stompjs";
+import {StompConfig} from '@stomp/ng2-stompjs';
 
 export const stompConfig: StompConfig = {
   // Which server?

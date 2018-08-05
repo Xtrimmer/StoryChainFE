@@ -9,13 +9,13 @@ import {StoryService} from "../../services/story.service";
   styleUrls: ['./create-story.component.css']
 })
 export class CreateStoryComponent {
-  showForm: boolean = false;
+  showForm = false;
   @Output() formSubmitted: EventEmitter<Story> = new EventEmitter<Story>();
   story: Story = new class implements Story {
     candidates: Candidate[];
-    citation: string = "The syndicate of Satoshi's storytellers";
+    citation = "The syndicate of Satoshi's storytellers";
     id: string;
-    period: number = 60;
+    period = 60;
     phrases: string[];
     title: string;
     updateTime: string;

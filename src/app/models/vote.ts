@@ -1,6 +1,6 @@
 export class Vote {
   phrase: string;
-  weight: number = 1;
+  weight = 1;
   voteType: VoteType;
 
   constructor(phrase: string, weightPolarity: number) {

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {routerTransition} from "./router.animations";
+import {routerTransition} from './router.animations';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +9,6 @@ import {routerTransition} from "./router.animations";
 export class AppComponent {
 
   getPage(outlet) {
-    return outlet.activatedRouteData['page']
+    return outlet.activatedRouteData['page'];
   }
 }
