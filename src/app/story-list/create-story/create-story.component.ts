@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {Story} from "../../models/story";
-import {Candidate} from "../../models/candidate";
 import {StoryService} from "../../services/story.service";
 
 @Component({
@@ -11,18 +10,11 @@ import {StoryService} from "../../services/story.service";
 export class CreateStoryComponent {
   showForm = false;
   @Output() formSubmitted: EventEmitter<Story> = new EventEmitter<Story>();
-  story: Story = new class implements Story {
-    candidates: Candidate[];
-    citation = "The syndicate of Satoshi's storytellers";
-    id: string;
-    period = 60;
-    phrases: string[];
-    title: string;
-    updateTime: string;
-    totalValue: number;
-  };
+  story: Story = new Story();
 
   constructor(private storyService: StoryService) {
+    this.story.citation = "The syndicate of Satoshi's storytellers";
+    this.story.period = 60;
   }
 
   toggleForm() {

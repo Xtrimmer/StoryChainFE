@@ -1,6 +1,6 @@
 import {Candidate} from './candidate';
 
-export interface Story {
+export class Story {
   id: string;
   title: string;
   phrases: string[];
