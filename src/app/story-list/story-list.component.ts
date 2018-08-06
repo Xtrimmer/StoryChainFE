@@ -20,7 +20,22 @@ export class StoryListComponent implements OnInit {
   }
 
   preview(story: Story): string {
-    return story.phrases.join(" ").slice(0, 100) + '...';
+    let fullStory = '';
+
+    if (story && story.phrases && story.phrases.length) {
+      story.phrases.forEach(a => fullStory += a.phrase + ' ');
+
+      if (fullStory.length > 0) {
+        fullStory = fullStory.substring(0, fullStory.length - 1);
+      }
+    } else {
+      fullStory = '[Add a new candidate to begin this story]';
+    }
+
+    if (fullStory.length > 100) {
+      return fullStory.substring(0, 100) + '...';
+    }
+    return fullStory;
   }
 
   onStoryCreated(story: Story) {
