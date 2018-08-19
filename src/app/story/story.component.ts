@@ -6,6 +6,7 @@ import {StoryService} from "../services/story.service";
 import {Vote} from "../models/vote";
 import {Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
+import {AddCandidateRequest} from "../models/add-candidate-request";
 
 @Component({
   selector: 'app-story',
@@ -22,7 +23,7 @@ export class StoryComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    let storyId = this.route.snapshot.paramMap.get('id');
+    let storyId = this.route.snapshot.paramMap.get('storyId');
     this.storyService.getStory(storyId).subscribe((story) => {
       this.story = story;
 
@@ -40,13 +41,15 @@ export class StoryComponent implements OnInit, OnDestroy {
     this.storyAddition = phrase;
   }
 
-  onAddPhrase(phrase: string): void {
-    this.storyService.addPhrase(this.story.id, phrase);
+  onAddPhrase(request: AddCandidateRequest): void {
+    request.storyId = this.story.id;
+    this.storyService.addPhrase(request);
     this.storyAddition = null;
   }
 
   onVote(vote: Vote): void {
-    this.storyService.vote(this.story.id, vote);
+    vote.storyId = this.story.id;
+    this.storyService.vote(vote);
   }
 
   ngOnDestroy(): void {

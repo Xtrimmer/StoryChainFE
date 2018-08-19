@@ -1,6 +1,6 @@
 <div class="container mt-4">
   <h1 class="display-4 text-center text-light mb-4">Story List</h1>
-  <app-create-story (formSubmitted)="onStoryCreated($event)"></app-create-story>
+  <app-create-story></app-create-story>
   <div *ngFor="let story of stories">
     <a [routerLink]="['/story', story.id]">
       <div class="jumbotron-min mt-3">

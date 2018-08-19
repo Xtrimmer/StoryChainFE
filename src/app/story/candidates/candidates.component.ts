@@ -41,6 +41,7 @@ export class CandidatesComponent implements OnInit, OnChanges {
   }
 
   submitVote() {
+    this.vote.redirectUrl = window.location.href;
     this.clickEvent.emit(this.vote);
     this.isVoting = false;
   }

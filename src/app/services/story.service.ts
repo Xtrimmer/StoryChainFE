@@ -5,6 +5,9 @@ import {Story} from '../models/story';
 import {catchError, tap} from 'rxjs/operators';
 import {throwError} from 'rxjs/internal/observable/throwError';
 import {Vote} from '../models/vote';
+import {AddCandidateRequest} from "../models/add-candidate-request";
+import {AddStoryRequest} from "../models/add-story-request";
+import {InvoiceUrl} from "../models/invoice-url";
 
 @Injectable({
   providedIn: 'root'
@@ -31,14 +34,20 @@ export class StoryService {
       );
   }
 
-  addPhrase(storyId: string, phrase: string): void {
-    this.http.post(this.url + 'add/candidate/' + storyId, phrase)
-      .subscribe(resp => {
-        console.log('response %o, ', resp);
+  addPhrase(request: AddCandidateRequest): void {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    const object: string = JSON.stringify(request);
+    this.http.post<InvoiceUrl>(this.url + 'add/candidate/', object, options)
+      .subscribe(invoiceUrl => {
+        document.location.href = invoiceUrl.invoiceUrl
       });
   }
 
-  vote(storyId: string, vote: Vote): void {
+  vote(vote: Vote): void {
     const options = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -46,21 +55,24 @@ export class StoryService {
     };
     const object: string = JSON.stringify(vote);
 
-    this.http.post(this.url + 'vote/' + storyId, object, options)
-      .subscribe(resp => {
-        console.log('response %o, ', resp);
+    this.http.post<InvoiceUrl>(this.url + 'vote/', object, options)
+      .subscribe(invoiceUrl => {
+        document.location.href = invoiceUrl.invoiceUrl
       });
   }
 
-  addNewStory(story: Story): Observable<Story> {
+  addNewStory(request: AddStoryRequest): void {
     let options = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     };
-    let object: string = JSON.stringify(story);
+    let object: string = JSON.stringify(request);
 
-    return this.http.post<Story>(this.url + 'add/story/', object, options);
+    this.http.post<InvoiceUrl>(this.url + 'add/story/', object, options)
+      .subscribe(invoiceUrl =>
+        document.location.href = invoiceUrl.invoiceUrl
+      );
   }
 
   private handleError(err: HttpErrorResponse) {
