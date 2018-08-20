@@ -1,4 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {AddCandidateRequest} from "../../models/add-candidate-request";
 
 @Component({
   selector: 'app-add-candidate',
@@ -8,7 +9,7 @@ export class AddCandidateComponent implements OnInit {
   phrase: string;
   cost: number = 0;
   @Output() phraseChanged: EventEmitter<string> = new EventEmitter<string>();
-  @Output() buttonClicked: EventEmitter<string> = new EventEmitter<string>();
+  @Output() buttonClicked: EventEmitter<AddCandidateRequest> = new EventEmitter<AddCandidateRequest>();
 
   constructor() {
   }
@@ -23,7 +24,8 @@ export class AddCandidateComponent implements OnInit {
 
   onClick(): void {
     if (this.phrase && this.phrase.length) {
-      this.buttonClicked.emit(this.phrase);
+      let request = new AddCandidateRequest(this.phrase, window.location.href)
+      this.buttonClicked.emit(request);
       this.phrase = null;
       this.cost = 0;
     }

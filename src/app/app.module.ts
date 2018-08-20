@@ -27,7 +27,7 @@ import {CreateStoryComponent} from './story-list/create-story/create-story.compo
     StoryDisplayComponent,
     CountdownTimerComponent,
     StoryListComponent,
-    CreateStoryComponent
+    CreateStoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +37,7 @@ import {CreateStoryComponent} from './story-list/create-story/create-story.compo
     HttpClientModule,
     RouterModule.forRoot([
       {path: 'storylist', component: StoryListComponent, data: {page: 'list'}},
-      {path: 'story/:id', component: StoryComponent, data: {page: 'detail'}},
+      {path: 'story/:storyId', component: StoryComponent, data: {page: 'detail'}},
       {path: '', redirectTo: 'storylist', pathMatch: 'full'},
       {path: '**', redirectTo: 'storylist', pathMatch: 'full'}
     ]),
