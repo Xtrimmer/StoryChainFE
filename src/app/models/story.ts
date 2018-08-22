@@ -8,6 +8,6 @@ export class Story {
   candidates: Candidate[];
   citation: string;
   period: number;
-  updateTime: string;
+  timeRemaining: number;
   totalValue: number;
 }

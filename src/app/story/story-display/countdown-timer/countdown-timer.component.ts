@@ -5,7 +5,7 @@ import {Component, Input, OnInit} from '@angular/core';
   templateUrl: './countdown-timer.component.html'
 })
 export class CountdownTimerComponent implements OnInit {
-  @Input() updateTime: string;
+  @Input() timeRemaining: number;
   count: string = "0s";
 
   constructor() {
@@ -17,15 +17,13 @@ export class CountdownTimerComponent implements OnInit {
 
   initiateCountDown() {
     setInterval(() => {
-      let now: number = new Date().getTime();
-      let then: number = new Date(this.updateTime).getTime();
-      let distance: number = then - now;
 
-      if (distance > 0) {
-        let days: number = Math.floor(distance / (1000 * 60 * 60 * 24));
-        let hours: number = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        let minutes: number = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        let seconds: number = Math.floor((distance % (1000 * 60)) / 1000);
+      if (this.timeRemaining > 0) {
+        let days: number = Math.floor(this.timeRemaining / (1000 * 60 * 60 * 24));
+        let hours: number = Math.floor((this.timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let minutes: number = Math.floor((this.timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds: number = Math.floor((this.timeRemaining % (1000 * 60)) / 1000);
+        this.timeRemaining -= 1000;
 
         this.count = (days > 0 ? days + "d " : "")
           + (hours > 0 ? hours + "h " : "")
