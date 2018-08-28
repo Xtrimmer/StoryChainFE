@@ -1,0 +1,35 @@
+<div class="container">
+  <h1 class="display-4 text-center text-light mb-4">Satoshi Stories</h1>
+  <div class="jumbotron pt-3">
+    <h3>Welcome!</h3>
+    <p>Satoshi stories is a ⚡lightning⚡ enabled, round based story building application that constructs stories a few
+      words at a time. It is completely crowdsourced, that is, each story on this site is created and built upon by the
+      collaborative efforts of the commmunity.</p>
+    <h3>Contributions</h3>
+    <p>Contributions can be made in a few different ways. One can:</p>
+    <ul>
+      <li>Create a new story by clicking on the <span class="badge badge-success">Create a new Story</span> button at
+        the
+        top of the <a [routerLink]="['/storylist']">story list page</a>.
+      </li>
+      <li>Add a new candidate phrase to an existing story. The candidate with the most votes at the end of the round
+        will
+        get appended to the story.
+      </li>
+      <li>
+        <span class="badge badge-success"><fa-icon [icon]="faAngleDoubleUp"></fa-icon> Upvote</span>
+        or
+        <span class="badge badge-danger"><fa-icon [icon]="faAngleDoubleDown"></fa-icon> Downvote</span>
+        an existing candidate phrase. One vote is one satoshi.
+      </li>
+    </ul>
+    <a class="mt-5 btn btn-success btn-sm btn-block" [routerLink]="['/storylist']">Continue on to the stories</a>
+  </div>
+  <div class="container text-light text-center">
+
+    <h3>Connect to our node <span class="badge badge-warning">TestNet</span></h3>
+    <p style="word-break: break-all">
+      03299de43cc0f1e4e35f9c832c05271c587387493cf7cc10f953a51c326d251cab@35.161.172.176:9735</p>
+    <p><img [src]="qrPath" alt="QR Code"></p>
+  </div>
+</div>

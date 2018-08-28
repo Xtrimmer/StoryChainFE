@@ -17,6 +17,7 @@ import {StoryListComponent} from './story-list/story-list.component';
 import {RouterModule} from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CreateStoryComponent} from './story-list/create-story/create-story.component';
+import {WelcomeComponent} from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {CreateStoryComponent} from './story-list/create-story/create-story.compo
     CountdownTimerComponent,
     StoryListComponent,
     CreateStoryComponent,
+    WelcomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,8 +40,9 @@ import {CreateStoryComponent} from './story-list/create-story/create-story.compo
     RouterModule.forRoot([
       {path: 'storylist', component: StoryListComponent, data: {page: 'list'}},
       {path: 'story/:storyId', component: StoryComponent, data: {page: 'detail'}},
-      {path: '', redirectTo: 'storylist', pathMatch: 'full'},
-      {path: '**', redirectTo: 'storylist', pathMatch: 'full'}
+      {path: 'welcome', component: WelcomeComponent, data: {page: 'welcome'}},
+      {path: '', redirectTo: 'welcome', pathMatch: 'full'},
+      {path: '**', redirectTo: 'welcome', pathMatch: 'full'}
     ]),
   ],
   providers: [StoryService,

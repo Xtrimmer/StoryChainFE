@@ -1,9 +1,15 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<nav class="navbar navbar-expand navbar-light bg-light">
-  <a class="navbar-brand">Satoshi's Stories</a>
-  <ul class="nav navbar-nav">
-    <li><a class="nav-link" [routerLink]="['/storylist']">Stories</a></li>
-  </ul>
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <a class="navbar-brand">⚡ Satoshi's Stories <span class="badge badge-warning">TestNet</span></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <ul class="nav navbar-nav">
+      <li><a class="nav-link" [routerLink]="['/welcome']">Welcome</a></li>
+      <li><a class="nav-link" [routerLink]="['/storylist']">Stories</a></li>
+    </ul>
+  </div>
 </nav>
 <div class="main" [@routerTransition]="getPage(appOutlet)">
   <div>
