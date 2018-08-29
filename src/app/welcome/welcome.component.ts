@@ -7,7 +7,7 @@ import {faAngleDoubleDown} from "@fortawesome/free-solid-svg-icons/faAngleDouble
   templateUrl: './welcome.component.html'
 })
 export class WelcomeComponent implements OnInit {
-  qrPath = 'assets/images/lnd-testnet.png';
+  qrPath = 'assets/images/lnd-mainnet.png';
   faAngleDoubleUp: any = faAngleDoubleUp;
   faAngleDoubleDown: any = faAngleDoubleDown;
 
