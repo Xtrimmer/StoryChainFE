@@ -45,7 +45,7 @@ export class StoryService {
     const object: string = JSON.stringify(request);
     this.http.post<InvoiceUrl>(this.url + 'add/candidate/', object, options)
       .subscribe(invoiceUrl => {
-        document.location.href = invoiceUrl.invoiceUrl
+        document.location.href = invoiceUrl.url
       });
   }
 
@@ -59,7 +59,7 @@ export class StoryService {
 
     this.http.post<InvoiceUrl>(this.url + 'vote/', object, options)
       .subscribe(invoiceUrl => {
-        document.location.href = invoiceUrl.invoiceUrl
+        document.location.href = invoiceUrl.url
       });
   }
 
@@ -73,7 +73,7 @@ export class StoryService {
 
     this.http.post<InvoiceUrl>(this.url + 'add/story/', object, options)
       .subscribe(invoiceUrl =>
-        document.location.href = invoiceUrl.invoiceUrl
+        document.location.href = invoiceUrl.url
       );
   }
 

@@ -1,3 +1,3 @@
 export class InvoiceUrl {
-  invoiceUrl: string
+  url: string
 }
