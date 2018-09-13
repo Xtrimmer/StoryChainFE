@@ -13,9 +13,7 @@ import {InvoiceUrl} from "../models/invoice-url";
   providedIn: 'root'
 })
 export class StoryService {
-  private url = 'http://54.203.203.182:5000/api/';
-
-  //private url = 'http://127.0.0.1:50000/api/';
+  private url = 'https://be.satoshi-stories.com/api/';
 
   constructor(private http: HttpClient) {
   }

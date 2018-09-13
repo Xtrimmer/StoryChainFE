@@ -2,8 +2,7 @@ import {StompConfig} from '@stomp/ng2-stompjs';
 
 export const stompConfig: StompConfig = {
   // Which server?
-  url: 'ws://54.203.203.182:5000/socket/websocket',
-  //url: 'ws://127.0.0.1:50000/socket/websocket',
+  url: 'wss://be.satoshi-stories.com/socket/websocket',
 
   // Headers
   // Typical keys: login, passcode, host
